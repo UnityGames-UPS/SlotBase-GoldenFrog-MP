@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "SlotEB-GoldenFrog.sln"
+    "dotnet.defaultSolution": "SlotBase-GoldenFrog-MP.sln"
 }

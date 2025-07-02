@@ -1,12 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using System;
-using UnityEngine.SceneManagement;
-using UnityEngine.Networking;
-using DG.Tweening;
-using System.Linq;
 using Newtonsoft.Json;
 using Best.SocketIO;
 using Best.SocketIO.Events;
@@ -18,37 +13,26 @@ public class SocketIOManager : MonoBehaviour
     [Header("scripts")]
     [SerializeField] private SlotBehaviour slotManager;
     [SerializeField] private UIManager uIManager;
-
     internal GameData initialData = null;
     internal UIData initUIData = null;
     internal GameData resultData = null;
     internal PlayerData playerdata = null;
     [SerializeField]
     internal List<string> bonusdata = null;
-    //WebSocket currentSocket = null;
     internal bool isResultdone = false;
-
     private SocketManager manager;
-    // protected string nameSpace="game"; //BackendChanges
     protected string nameSpace = ""; //BackendChanges
     private Socket gameSocket; //BackendChanges
     [SerializeField]
     internal JSHandler _jsManager;
-
-    //[SerializeField]
-    //private string SocketURI;
-
     protected string SocketURI = null;
     //protected string TestSocketURI = "https://game-crm-rtp-backend.onrender.com/";
     protected string TestSocketURI = "http://localhost:5001";
-
     [SerializeField]
     private string TestToken;
     [SerializeField] internal JSFunctCalls JSManager;
-
     protected string gameID = "SL-GF";
     //protected string gameID = "";
-
     internal bool isLoading;
     internal bool SetInit = false;
     private const int maxReconnectionAttempts = 6;
@@ -63,7 +47,6 @@ public class SocketIOManager : MonoBehaviour
 
     private void Start()
     {
-        //OpenWebsocket();
         OpenSocket();
     }
 
