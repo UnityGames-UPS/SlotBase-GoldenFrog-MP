@@ -28,7 +28,7 @@ public class AudioController : MonoBehaviour
         audioPlayer_wl.clip = Win_Audio;
         break;
     }
-    StopWLAaudio();
+    StopWLAudio();
     audioPlayer_wl.Play();
   }
 
@@ -65,7 +65,7 @@ public class AudioController : MonoBehaviour
       }
       else
       {
-        StopWLAaudio();
+        StopWLAudio();
         audioPlayer_Spin.Stop();
       }
       if (!audioPlayer_button.mute) audioPlayer_button.UnPause();
@@ -92,7 +92,7 @@ public class AudioController : MonoBehaviour
     audioPlayer_button.Play();
   }
 
-  internal void StopWLAaudio()
+  internal void StopWLAudio()
   {
     audioPlayer_wl.Stop();
     audioPlayer_wl.loop = false;

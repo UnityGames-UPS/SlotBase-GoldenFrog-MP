@@ -7022,11 +7022,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   About_Button: {fileID: 721399234}
-  About_Object: {fileID: 721399232}
-  About_RT: {fileID: 721399233}
-  Exit_Button: {fileID: 1298846852}
-  Exit_Object: {fileID: 1298846850}
-  Exit_RT: {fileID: 1298846851}
   MainPopup_Object: {fileID: 1643718612}
   AboutPopup_Object: {fileID: 1664697762}
   AboutExit_Button: {fileID: 175694440}
@@ -7080,7 +7075,6 @@ MonoBehaviour:
   - {fileID: 1728115563}
   RightBtn: {fileID: 1102894734}
   LeftBtn: {fileID: 1563929046}
-  m_AwakeGameButton: {fileID: 742977646}
   SkipWinAnimation: {fileID: 348758726}
   SkipJackpotAnimation: {fileID: 921072608}
 --- !u!1 &378754491
@@ -9387,10 +9381,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotManager: {fileID: 2046803210}
   uIManager: {fileID: 377874625}
-  bonusdata: []
-  _jsManager: {fileID: 500036493}
-  TestToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZjI4NTgyNmUxNWVlNzkwZGY4MzQwNCIsInVzZXJuYW1lIjoidmFpYmhhdiIsInJvbGUiOiJwbGF5ZXIiLCJpYXQiOjE3MzU5ODg2MjgsImV4cCI6MTczNjU5MzQyOH0.IUU7sfn7dv_f9jZjFK50qTyszLBibWXUwI_eFej0cC8
   JSManager: {fileID: 1151263181}
+  TestSocketURI: http://localhost:5000/
+  TestToken: de6b5569d832432dad53f1609b81016d
 --- !u!114 &500036493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10693,8 +10686,8 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: 0f2da27fa10ac4969bfdf9b1b8d7c5b7, type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 0f2da27fa10ac4969bfdf9b1b8d7c5b7, type: 3}
+    m_HighlightedSprite: {fileID: 21300000, guid: 2c3589319af8346a3a8533692147211f, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 2c3589319af8346a3a8533692147211f, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -10719,7 +10712,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
 --- !u!114 &567733207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10740,7 +10733,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2c3589319af8346a3a8533692147211f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0f2da27fa10ac4969bfdf9b1b8d7c5b7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -34313,7 +34306,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce5425de25e7b479e921e2bb06840bcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainContainer_RT: {fileID: 1574897783}
   myImages:
   - {fileID: 21300000, guid: 4a29bd9d5ac7e447985c846db88b5a6a, type: 3}
   - {fileID: 21300000, guid: 3548c1cee1a1344b9b7270ef0631c73c, type: 3}
@@ -34435,18 +34427,6 @@ MonoBehaviour:
     - {fileID: 326768487}
   TurboToggleSprites:
   - {fileID: 21300000, guid: a6d9e18224cf044c0aef3a4c8dd9b7da, type: 3}
-  Slot_Objects:
-  - {fileID: 1814462059}
-  - {fileID: 345215053}
-  - {fileID: 1173368040}
-  - {fileID: 1917131126}
-  - {fileID: 724812879}
-  Slot_Elements:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   Slot_Transform:
   - {fileID: 1814462060}
   - {fileID: 345215054}
@@ -34812,17 +34792,10 @@ MonoBehaviour:
   BetPerLine_text: {fileID: 506715596}
   Total_lines: {fileID: 769100710}
   audioController: {fileID: 4884499504835516836}
-  _audioSource: {fileID: 0}
-  _spinSound: {fileID: 8300000, guid: 0f09e72e9664b44ccb04528b51349cb8, type: 3}
-  _lossSound: {fileID: 8300000, guid: 8222cb923cd554c0da221b02d07bff98, type: 3}
-  _winSounds:
-  - {fileID: 8300000, guid: 46b5afe06c17042849fff79d719c84fa, type: 3}
-  - {fileID: 8300000, guid: 253fd3758b60d4169a4610ea7fe4fb50, type: 3}
   Image_Prefab: {fileID: 595047196131445314, guid: 04c659a2f5ec249f5be006eb52752781, type: 3}
   PayCalculator: {fileID: 963807277}
   TempList: []
   IconSizeFactor: 230
-  verticalVisibility: 3
   SocketManager: {fileID: 500036492}
   uiManager: {fileID: 377874625}
   spacefactor: 8

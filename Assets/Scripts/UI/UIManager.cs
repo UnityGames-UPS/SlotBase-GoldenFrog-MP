@@ -87,8 +87,6 @@ public class UIManager : MonoBehaviour
   [SerializeField] private Button RightBtn;
   [SerializeField] private Button LeftBtn;
 
-  [SerializeField]
-  private Button m_AwakeGameButton;
   private bool isMusic = true;
   private bool isSound = true;
   private bool isExit = false;
@@ -97,18 +95,6 @@ public class UIManager : MonoBehaviour
   [SerializeField] private Button SkipWinAnimation;
   [SerializeField] private Button SkipJackpotAnimation;
 
-
-  private void Awake()
-  {
-    SimulateClickByDefault();
-  }
-
-  private void SimulateClickByDefault()
-  {
-    Debug.Log("Awaken The Game...");
-    m_AwakeGameButton.onClick.AddListener(() => { Debug.Log("Called The Game..."); });
-    m_AwakeGameButton.onClick.Invoke();
-  }
 
   private void Start()
   {
@@ -161,7 +147,7 @@ public class UIManager : MonoBehaviour
 
 
     if (CloseDisconnect_Button) CloseDisconnect_Button.onClick.RemoveAllListeners();
-    if (CloseDisconnect_Button) CloseDisconnect_Button.onClick.AddListener(delegate { CallOnExitFunction(); socketManager.ReactNativeCallOnFailedToConnect(); }); //BackendChanges
+    if (CloseDisconnect_Button) CloseDisconnect_Button.onClick.AddListener(delegate { CallOnExitFunction(); }); 
 
     if (Close_Button) Close_Button.onClick.AddListener(delegate { ClosePopup(LowBalancePopup_Object); });
 
@@ -264,7 +250,7 @@ public class UIManager : MonoBehaviour
     OpenPopup(LowBalancePopup_Object);
   }
 
-  internal void InitialiseUIData(string SupportUrl, string AbtImgUrl, string TermsUrl, string PrivacyUrl, Paylines symbolsText)
+  internal void InitialiseUIData(Paylines symbolsText)
   {
     PopulateSymbolsPayout(symbolsText);
   }
@@ -279,17 +265,17 @@ public class UIManager : MonoBehaviour
     for (int i = 0; i < SymbolsText.Length; i++)
     {
       string text = null;
-      if (paylines.symbols[i].Multiplier[0][0] != 0)
+      if (paylines.symbols[i].multiplier[0] != 0)
       {
-        text += "5x - " + paylines.symbols[i].Multiplier[0][0] + "x";
+        text += "5x - " + paylines.symbols[i].multiplier[0] + "x";
       }
-      if (paylines.symbols[i].Multiplier[1][0] != 0)
+      if (paylines.symbols[i].multiplier[1] != 0)
       {
-        text += "\n4x - " + paylines.symbols[i].Multiplier[1][0] + "x";
+        text += "\n4x - " + paylines.symbols[i].multiplier[1] + "x";
       }
-      if (paylines.symbols[i].Multiplier[2][0] != 0)
+      if (paylines.symbols[i].multiplier[2] != 0)
       {
-        text += "\n3x - " + paylines.symbols[i].Multiplier[2][0] + "x";
+        text += "\n3x - " + paylines.symbols[i].multiplier[2] + "x";
       }
       if (SymbolsText[i]) SymbolsText[i].text = text;
     }
@@ -297,12 +283,12 @@ public class UIManager : MonoBehaviour
     for (int i = 0; i < paylines.symbols.Count; i++)
     {
 
-      if (paylines.symbols[i].Name.ToUpper() == "SCATTER")
+      if (paylines.symbols[i].name.ToUpper() == "SCATTER")
       {
         if (Scatter_Text) Scatter_Text.text = paylines.symbols[i].description.ToString();
       }
 
-      if (paylines.symbols[i].Name.ToUpper() == "WILD")
+      if (paylines.symbols[i].name.ToUpper() == "WILD")
       {
         if (Wild_Text) Wild_Text.text = paylines.symbols[i].description.ToString();
       }
@@ -335,8 +321,6 @@ public class UIManager : MonoBehaviour
     paytableList[CurrentIndex].SetActive(false);
   }
 
-
-
   private void Slide(int direction)
   {
     if (audioController) audioController.PlayButtonAudio();
@@ -351,7 +335,6 @@ public class UIManager : MonoBehaviour
     }
     else if (CurrentIndex >= 1 && direction < 0)
     {
-
       // Move to the previous item
       paytableList[CurrentIndex].SetActive(false);
       paytableList[CurrentIndex - 1].SetActive(true);
