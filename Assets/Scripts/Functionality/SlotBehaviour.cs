@@ -567,7 +567,15 @@ public class SlotBehaviour : MonoBehaviour
 
     if (audioController) audioController.StopSpinAudio();
 
+    if (SocketManager.resultData.payload.winAmount > 0)
+    {
+      if (audioController) audioController.PlayWLAudio("win");
+    }
     CheckWinLines(SocketManager.resultData.payload.wins);
+    if (SocketManager.resultData.scatter.amount > 0)
+    {
+      PlaySpecialSymbolAnimations(10);
+    }
     CheckPopups = true;
     CheckWinPopups();
 
@@ -609,6 +617,21 @@ public class SlotBehaviour : MonoBehaviour
     }
   }
 
+  void PlaySpecialSymbolAnimations(int id)
+  {
+    for (int i = 0; i < 3; i++)
+    {
+      for (int j = 0; j < 5; j++)
+      {
+        int resultNum = int.Parse(SocketManager.resultData.matrix[i][j]);
+        if (resultNum == id)
+        {
+          StartGameAnimation(Tempimages[j].slotImages[i].gameObject);
+        }
+      }
+    }
+  }
+
   private void shuffleInitialMatrix()
   {
     for (int i = 0; i < Tempimages.Count; i++)
@@ -633,13 +656,11 @@ public class SlotBehaviour : MonoBehaviour
 
   void ToggleButtonGrp(bool toggle)
   {
-
     if (SlotStart_Button) SlotStart_Button.interactable = toggle;
     if (AutoSpin_Button) AutoSpin_Button.interactable = toggle;
     if (Maxbet_button) Maxbet_button.interactable = toggle;
     if (BetMinus_Button) BetMinus_Button.interactable = toggle;
     if (BetPlus_Button) BetPlus_Button.interactable = toggle;
-
   }
 
   private void CompareBalance()
@@ -667,7 +688,6 @@ public class SlotBehaviour : MonoBehaviour
     else
     {
       animObjects.GetComponent<ImageAnimation>().StartAnimation();
-
     }
   }
 
@@ -694,7 +714,6 @@ public class SlotBehaviour : MonoBehaviour
     }
 
     WinningTextAnimationToggle(true);
-    if (audioController) audioController.PlayWLAudio("win");
 
     List<KeyValuePair<int, int>> coords = new();
     for (int j = 0; j < wins.Count; j++)

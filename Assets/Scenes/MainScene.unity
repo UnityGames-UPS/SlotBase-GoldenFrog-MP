@@ -9383,7 +9383,7 @@ MonoBehaviour:
   uIManager: {fileID: 377874625}
   JSManager: {fileID: 1151263181}
   TestSocketURI: http://localhost:5000/
-  TestToken: de6b5569d832432dad53f1609b81016d
+  TestToken: 9d97e14aa1b048b9945e4e2161301542
 --- !u!114 &500036493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16446,7 +16446,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0025177002, y: -337.19}
+  m_AnchoredPosition: {x: 0.0025177002, y: -398.01}
   m_SizeDelta: {x: 399.99, y: 261.06}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &951131705
@@ -16501,7 +16501,7 @@ MonoBehaviour:
   m_fontSize: 38
   m_fontSizeBase: 38
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
@@ -30634,7 +30634,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -288.18}
+  m_AnchoredPosition: {x: 0, y: -349}
   m_SizeDelta: {x: 535, y: 270}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1806150163
@@ -30687,7 +30687,7 @@ MonoBehaviour:
   m_fontSize: 38
   m_fontSizeBase: 38
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
