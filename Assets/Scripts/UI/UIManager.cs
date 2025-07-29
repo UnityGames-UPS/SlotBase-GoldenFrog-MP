@@ -60,6 +60,9 @@ public class UIManager : MonoBehaviour
   [SerializeField] private SlotBehaviour slotManager;
   [SerializeField] private SocketIOManager socketManager;
 
+  [Header("Reconnection popup")]
+  [SerializeField] private GameObject ReconnectPopup_Object;
+
   [Header("disconnection popup")]
   [SerializeField] private Button CloseDisconnect_Button;
   [SerializeField] private GameObject DisconnectPopup_Object;
@@ -145,9 +148,8 @@ public class UIManager : MonoBehaviour
     if (RightBtn) RightBtn.onClick.RemoveAllListeners();
     if (RightBtn) RightBtn.onClick.AddListener(delegate { Slide(+1); });
 
-
     if (CloseDisconnect_Button) CloseDisconnect_Button.onClick.RemoveAllListeners();
-    if (CloseDisconnect_Button) CloseDisconnect_Button.onClick.AddListener(delegate { CallOnExitFunction(); }); 
+    if (CloseDisconnect_Button) CloseDisconnect_Button.onClick.AddListener(delegate { CallOnExitFunction(); });
 
     if (Close_Button) Close_Button.onClick.AddListener(delegate { ClosePopup(LowBalancePopup_Object); });
 
@@ -297,9 +299,12 @@ public class UIManager : MonoBehaviour
 
   private void CallOnExitFunction()
   {
-    isExit = true;
-    audioController.PlayButtonAudio();
-    socketManager.CloseSocket();
+    if (!isExit)
+    {
+      isExit = true;
+      audioController.PlayButtonAudio();
+      StartCoroutine(socketManager.CloseSocket());
+    }
   }
 
   private void OpenPopup(GameObject Popup)
@@ -314,10 +319,7 @@ public class UIManager : MonoBehaviour
   {
     if (audioController) audioController.PlayButtonAudio();
     if (Popup) Popup.SetActive(false);
-    if (!DisconnectPopup_Object.activeSelf)
-    {
-      if (MainPopup_Object) MainPopup_Object.SetActive(false);
-    }
+    if (MainPopup_Object) MainPopup_Object.SetActive(false);
     paytableList[CurrentIndex].SetActive(false);
   }
 
@@ -361,12 +363,29 @@ public class UIManager : MonoBehaviour
 
   }
 
+  internal void CheckAndClosePopups()
+  {
+    if (ReconnectPopup_Object.activeInHierarchy)
+    {
+      ClosePopup(ReconnectPopup_Object);
+    }
+    if (DisconnectPopup_Object.activeInHierarchy)
+    {
+      ClosePopup(DisconnectPopup_Object);
+    }
+  }
+
   internal void DisconnectionPopup()
   {
     if (!isExit)
     {
       OpenPopup(DisconnectPopup_Object);
     }
+  }
+
+  internal void ReconnectionPopup()
+  {
+    OpenPopup(ReconnectPopup_Object);
   }
 
   private void ToggleMusic()

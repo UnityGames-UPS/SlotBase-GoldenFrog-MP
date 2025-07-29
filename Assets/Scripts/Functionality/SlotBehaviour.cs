@@ -303,15 +303,6 @@ public class SlotBehaviour : MonoBehaviour
     PayCalculator.ResetStaticLine();
   }
 
-  //just for testing purposes delete on production
-  private void Update()
-  {
-    if (Input.GetKeyDown(KeyCode.Space) && SlotStart_Button.interactable)
-    {
-      StartSlots();
-    }
-  }
-
   internal void SetInitialUI()
   {
     shuffleInitialMatrix();
@@ -647,11 +638,6 @@ public class SlotBehaviour : MonoBehaviour
   private void OnApplicationFocus(bool focus)
   {
     audioController.CheckFocusFunction(focus, CheckSpinAudio);
-  }
-
-  internal void CallCloseSocket()
-  {
-    SocketManager.CloseSocket();
   }
 
   void ToggleButtonGrp(bool toggle)
