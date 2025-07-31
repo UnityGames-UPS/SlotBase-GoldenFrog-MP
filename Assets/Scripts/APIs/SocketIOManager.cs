@@ -113,7 +113,7 @@ public class SocketIOManager : MonoBehaviour
     Debug.Log("Auth function configured with token: " + myAuth);
     SetupSocketManager(options);
   }
-  
+
   private void SetupSocketManager(SocketOptions options)
   {
     // Create and setup SocketManager
@@ -143,6 +143,8 @@ public class SocketIOManager : MonoBehaviour
     gameSocket.On<string>("internalError", OnSocketError);
     gameSocket.On<string>("alert", OnSocketAlert);
     gameSocket.On<string>("AnotherDevice", OnSocketOtherDevice);
+
+    manager.Open();
   }
 
   void OnConnected(ConnectResponse resp) 
@@ -226,6 +228,12 @@ public class SocketIOManager : MonoBehaviour
   {
     Debug.Log("Received Device Error with data: " + data);
     uIManager.ADfunction();
+  }
+
+  void CloseGame()
+  {
+    Debug.Log("Unity: Closing Game");
+    StartCoroutine(CloseSocket());
   }
 
   internal IEnumerator CloseSocket() //Back2 Start
