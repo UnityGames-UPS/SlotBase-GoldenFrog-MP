@@ -410,6 +410,7 @@ public class SlotBehaviour : MonoBehaviour
   //starts the spin process
   private void StartSlots(bool autoSpin = false)
   {
+    SlotStart_Button.interactable = false; 
     WinningTextAnimationToggle(false);
     TotalWin_text.text = "0.000";
     if (!autoSpin)
@@ -481,13 +482,12 @@ public class SlotBehaviour : MonoBehaviour
   //manage the Routine for spinning of the slots
   private IEnumerator TweenRoutine()
   {
-    yield return new WaitForSeconds(0.1f);
     if (currentBalance < currentTotalBet)
     {
       CompareBalance();
       StopAutoSpin();
-      yield return new WaitForSeconds(1f);
       ToggleButtonGrp(true);
+      yield return new WaitForSeconds(1f);
       yield break;
     }
     IsSpinning = true;

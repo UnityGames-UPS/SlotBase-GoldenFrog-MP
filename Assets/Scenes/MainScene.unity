@@ -9360,7 +9360,7 @@ MonoBehaviour:
   uIManager: {fileID: 377874625}
   JSManager: {fileID: 1151263181}
   TestSocketURI: http://localhost:5000/
-  TestToken: 9d97e14aa1b048b9945e4e2161301542
+  TestToken: 29cf85fca2f94497ac52161bdc53b07a
   RaycastBlocker: {fileID: 267531001}
 --- !u!1 &503935038
 GameObject:
